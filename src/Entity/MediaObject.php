@@ -85,8 +85,25 @@ class MediaObject
    */
   public $filePath;
 
+  /**
+   * @ORM\ManyToOne(targetEntity="App\Entity\Reparation", inversedBy="gallery")
+   */
+  private $reparation;
+
   public function getId(): ?int
   {
     return $this->id;
+  }
+
+  public function getReparation(): ?Reparation
+  {
+      return $this->reparation;
+  }
+
+  public function setReparation(?Reparation $reparation): self
+  {
+      $this->reparation = $reparation;
+
+      return $this;
   }
 }
